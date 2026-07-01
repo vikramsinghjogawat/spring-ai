@@ -25,6 +25,7 @@ VectorStore Class -SimpleVectorStore is provided by spring AI
 We can add startes related to the type of file we are working with: MarkDown Document Reader, PDF Document Reader, Tika Document Reader
 
 <hr>
+#How to embed diff type of document in vector stores
 //Here resource is our private data
 DocumentReader dr = new MarkdownDocumentReader(resource, MarkDownDocumentReaderConfig,defaultConfig());
 List<Document> docs = dr.get();
@@ -34,7 +35,13 @@ List<Document>  splitDoc = ts.apply(docs);
 vectorStore.accept(splitDoc);
 <hr>
 //Till now we have stored the data
-
+#How to embedd using embeddingModel by spring ai in vector stores
+use 1 = embeddingModel.embed(List.of("String1","String2"));
+use 2 = 
+EmbeddingRequest er = new EmbeddingRequest(List.of(<Strings>, options);
+embeddingModel.call(er);
+use 3 = Document doc = new Document(text, Map.of(source, uploaded-docs)); 
+embeddingModel.embed(doc);
 
 
   
