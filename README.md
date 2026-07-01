@@ -19,5 +19,23 @@ we want to generate some report->LLM does not have the data to generate that rep
 -> Now to generate query from vector store -> input that to LLM
 -> Now LLM will give us response based on prompt and data from vector store
 
+# We are using Spring AI Embedding models api.
+We will be using Ollama here so we need to choose LLM moodels that supports Embedding.
+VectorStore Class -SimpleVectorStore is provided by spring AI
+We can add startes related to the type of file we are working with: MarkDown Document Reader, PDF Document Reader, Tika Document Reader
+
+<hr>
+//Here resource is our private data
+DocumentReader dr = new MarkdownDocumentReader(resource, MarkDownDocumentReaderConfig,defaultConfig());
+List<Document> docs = dr.get();
+//If we want to split our docs further we can use Text Splitter
+TextSplitter ts = new TokenTextSplitter();
+List<Document>  splitDoc = ts.apply(docs);
+vectorStore.accept(splitDoc);
+<hr>
+//Till now we have stored the data
+
+
+
   
   
